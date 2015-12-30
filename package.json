@@ -1,0 +1,18 @@
+{
+  "name": "@f/middleware",
+  "description": "Utility for middleware composition.",
+  "repository": "git://github.com/micro-js/middleware.git",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "postversion": "git push && git push --tags && npm publish --access=public"
+  },
+  "dependencies": {
+    "@f/slice": "^1.1.1"
+  },
+  "devDependencies": {
+    "ramda": "^0.19.0",
+    "tape": "^4.2.2"
+  }
+}
