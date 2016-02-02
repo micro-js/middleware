@@ -5,6 +5,7 @@
 var middleware = require('..')
 var test = require('tape')
 var pipe = require('ramda').pipe
+var compose = require('ramda').compose
 
 /**
  * Tests
@@ -86,6 +87,24 @@ test('should map stack', function (t) {
   }
 })
 
+test('should replace compose function', function (t) {
+  var fn = middleware(composePipe)
+  fn.use(function (arg) {
+    return arg * 2
+  })
+  fn.use(function (arg) {
+    return arg + 1
+  })
+  fn.replace(simpleCompose)
+
+  t.equal(fn(1), 4)
+  t.end()
+})
+
 function composePipe (middleware) {
   return pipe.apply(null, middleware)
+}
+
+function simpleCompose(middleware) {
+  return compose.apply(null, middleware)
 }
